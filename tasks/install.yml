@@ -1,0 +1,39 @@
+---
+- name: Install Build Dependencies
+  apt:
+    state: latest
+    pkg: "{{ item }}"
+  with_items:
+    - libevent-dev
+    - libfuse-dev
+    - libglib2.0-dev
+    - libxml2-dev
+
+- name: Clone Repository
+  git:
+    repo: 'https://github.com/skoobe/riofs.git'
+    dest: /opt/riofs
+
+- name: Build | autogen
+  command: ./autogen.sh
+  args:
+    chdir: /opt/riofs
+    creates: /opt/riofs/configure
+
+- name: Build | configure
+  command: ./configure
+  args:
+    chdir: /opt/riofs
+    creates: /opt/riofs/Makefile
+
+- name: Build | make
+  command: make
+  args:
+    chdir: /opt/riofs
+    creates: /opt/riofs/src/riofs
+
+- name: Install | make install
+  command: make install
+  args:
+    chdir: /opt/riofs
+    creates: /usr/local/bin/riofs
