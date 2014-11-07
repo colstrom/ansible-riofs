@@ -1,0 +1,11 @@
+---
+dependencies:
+  - role: package/upstart
+    upstart_name: riofs
+    upstart_description: "RioFS"
+    upstart_environment:
+      - "AWS_ACCESS_KEY_ID={{ riofs_access_key_id }}"
+      - "AWS_SECRET_ACCESS_KEY={{ riofs_secret_access_key }}"
+    upstart_exec: "/usr/local/bin/riofs {{ riofs_bucket_name }} {{ riofs_mountpoint }}"
+    upstart_pre_start:
+      - "mkdir -p {{ riofs_mountpoint }}"
