@@ -4,36 +4,47 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
+    - build-essential
+    - intltool
     - libevent-dev
     - libfuse-dev
     - libglib2.0-dev
+    - libmagic-dev
+    - libssl-dev
     - libxml2-dev
+    - pkg-config
 
 - name: Clone Repository
   git:
     repo: 'https://github.com/skoobe/riofs.git'
-    dest: /opt/riofs
+    dest: "{{ riofs_build_path }}"
 
 - name: Build | autogen
   command: ./autogen.sh
   args:
-    chdir: /opt/riofs
-    creates: /opt/riofs/configure
+    chdir: "{{ riofs_build_path }}"
+    creates: "{{ riofs_build_path }}/configure"
 
 - name: Build | configure
   command: ./configure
   args:
-    chdir: /opt/riofs
-    creates: /opt/riofs/Makefile
+    chdir: "{{ riofs_build_path }}"
+    creates: "{{ riofs_build_path }}/Makefile"
 
 - name: Build | make
   command: make
   args:
-    chdir: /opt/riofs
-    creates: /opt/riofs/src/riofs
+    chdir: "{{ riofs_build_path }}"
+    creates: "{{ riofs_build_path }}/src/riofs"
 
 - name: Install | make install
   command: make install
   args:
-    chdir: /opt/riofs
-    creates: /usr/local/bin/riofs
+    chdir: "{{ riofs_build_path }}"
+    creates: "{{ '/usr/local/bin/riofs' if not riofs_always_reinstall else omit }}"
+
+- name: Cleanup | make clean
+  command: make clean
+  args:
+    chdir: "{{ riofs_build_path }}"
+  when: riofs_clean_after_build
