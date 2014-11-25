@@ -1,5 +1,5 @@
 <app>
-    <foreground type="boolean">False</foreground>
+    <foreground type="boolean">True</foreground>
 </app>
 
 <log>
