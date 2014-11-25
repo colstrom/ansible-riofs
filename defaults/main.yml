@@ -3,4 +3,3 @@ riofs_mountpoint: /mnt/riofs
 riofs_build_path: /opt/riofs
 riofs_clean_after_build: yes
 riofs_always_reinstall: yes
-riofs_config_path: /usr/local/etc/riofs/riofs.conf.xml

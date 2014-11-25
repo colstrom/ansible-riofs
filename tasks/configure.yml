@@ -9,13 +9,15 @@
     - configuration
     - fuse
 
-- name: "Configure | {{ riofs_config_path }} | {{ item.regexp }}"
-  replace:
-    dest: "{{ riofs_config_path }}"
-    regexp: "{{ item.regexp }}"
-    replace: "{{ item.replace }}"
+- name: Upload Config | RioFS
+  template:
+    src: "{{ item }}"
+    dest: "/{{ item }}"
+    owner: root
+    group: wcadmin
+    mode: 0775
   with_items:
-    - regexp: '### AWS Access Key ID ###'
-      replace: "{{ riofs_access_key_id }}"
-    - regexp: '### AWS Secret Access Key ###'
-      replace: "{{ riofs_secret_access_key }}"
+    - /usr/local/etc/riofs/riofs.conf.xml
+  tags:
+    - configuration
+    - template-configuration
