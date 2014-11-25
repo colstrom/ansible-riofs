@@ -17,7 +17,7 @@
     group: wcadmin
     mode: 0775
   with_items:
-    - /usr/local/etc/riofs/riofs.conf.xml
+    - usr/local/etc/riofs/riofs.conf.xml
   tags:
     - configuration
     - template-configuration
