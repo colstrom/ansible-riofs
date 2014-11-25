@@ -11,7 +11,6 @@
 
 - name: "Configure | {{ riofs_config_path }} | {{ item.regexp }}"
   replace:
-    state: present
     dest: "{{ riofs_config_path }}"
     regexp: "{{ item.regexp }}"
     replace: "{{ item.replace }}"
