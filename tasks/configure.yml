@@ -8,3 +8,15 @@
   tags:
     - configuration
     - fuse
+
+- name: "Configure | {{ riofs_config_path }} | {{ item.regexp }}"
+  replace:
+    state: present
+    dest: "{{ riofs_config_path }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - regexp: '### AWS Access Key ID ###'
+      replace: "{{ riofs_access_key_id }}"
+    - regexp: '### AWS Secret Access Key ###'
+      replace: "{{ riofs_secret_access_key }}"
