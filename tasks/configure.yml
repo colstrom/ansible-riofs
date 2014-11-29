@@ -13,6 +13,7 @@
   user:
     name: "{{ riofs_user }}"
     groups: fuse
+  when: riofs_user is not 'root'
 
 - name: Upload Config | RioFS
   template:
