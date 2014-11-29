@@ -9,6 +9,11 @@
     - configuration
     - fuse
 
+- name: "Add {{ riofs_user }} to %fuse"
+  user:
+    name: "{{ riofs_user }}"
+    groups: fuse
+
 - name: Upload Config | RioFS
   template:
     src: "{{ item }}"
