@@ -6,5 +6,8 @@ dependencies:
     upstart_exec: "/usr/local/bin/riofs -- --fuse-options='allow_other' {{ riofs_bucket_name }} {{ riofs_mountpoint }}"
     upstart_pre_start:
       - "mkdir -p {{ riofs_mountpoint }}"
+      - "chown {{ riofs_user }}:{{ riofs_group }} {{ riofs_mountpoint }}"
+    upstart_user: "{{ riofs_user }}"
+    upstart_group: "{{ riofs_group }}"
   - role: meta/monitor
     monitor_name: riofs
