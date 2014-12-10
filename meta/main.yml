@@ -3,7 +3,11 @@ dependencies:
   - role: package/upstart
     upstart_name: riofs
     upstart_description: "RioFS"
-    upstart_exec: "/usr/local/bin/riofs -- --fuse-options='allow_other' {{ riofs_bucket_name }} {{ riofs_mountpoint }}"
+    upstart_exec_path: /usr/local/bin/riofs
+    upstart_exec_flags:
+      - --fuse-options='allow_other'
+      - "{{ riofs_bucket_name }}"
+      - "{{ riofs_mountpoint }}"
     upstart_pre_start:
       - "mkdir -p {{ riofs_mountpoint }}"
       - "chown {{ riofs_user }}:{{ riofs_group }} {{ riofs_mountpoint }}"
