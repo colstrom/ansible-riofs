@@ -3,7 +3,7 @@ riofs_mountpoint: /mnt/s3
 riofs_build_path: /opt/riofs
 riofs_clean_after_build: yes
 riofs_always_reinstall: yes
-riofs_user: root
+riofs_user: riofs
 riofs_group: riofs
-riofs_allowed_users: []
+riofs_users: []
 riofs_bucket_name: "telusdigital-{{ project }}-{{ environment_tier }}"

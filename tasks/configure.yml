@@ -15,11 +15,12 @@
     system: yes
   when: riofs_group != 'root'
 
-- name: "Add User {{ riofs_user }} to groups"
-  user:
+- name: "Create User | %{{ riofs_user }}"
+  User:
     name: "{{ riofs_user }}"
-    groups: "fuse,{{ riofs_group }}"
-    append: yes
+    group: "{{ riofs_group }}"
+    groups: fuse
+    system: yes
   when: riofs_user != 'root'
 
 - name: "Add User {{ item }} to %{{ riofs_group }}"
@@ -27,13 +28,13 @@
     name: "{{ item }}"
     groups: "{{ riofs_group }}"
     append: yes
-  with_items: riofs_allowed_users
+  with_items: riofs_users
 
 - name: Upload Config | RioFS
   template:
     src: "{{ item }}"
     dest: "/{{ item }}"
-    owner: root
+    owner: "{{ riofs_user }}"
     group: wcadmin
     mode: 0775
   with_items:
