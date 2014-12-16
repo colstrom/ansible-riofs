@@ -9,11 +9,25 @@
     - configuration
     - fuse
 
-- name: "Add {{ riofs_user }} to %fuse"
+- name: "Create Group | %{{ riofs_group }}"
+  group:
+    name: "{{ riofs_group }}"
+    system: yes
+  when: riofs_group != 'root'
+
+- name: "Add User {{ riofs_user }} to groups"
   user:
     name: "{{ riofs_user }}"
-    groups: fuse
+    groups: "fuse,{{ riofs_group }}"
+    append: yes
   when: riofs_user != 'root'
+
+- name: "Add User {{ item }} to %{{ riofs_group }}"
+  user:
+    name: "{{ item }}"
+    groups: "{{ riofs_group }}"
+    append: yes
+  with_items: riofs_allowed_users
 
 - name: Upload Config | RioFS
   template:
