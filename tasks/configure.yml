@@ -16,7 +16,7 @@
   when: riofs_group != 'root'
 
 - name: "Create User | %{{ riofs_user }}"
-  User:
+  user:
     name: "{{ riofs_user }}"
     group: "{{ riofs_group }}"
     groups: fuse
