@@ -37,7 +37,7 @@
 
     <!-- compatibility with s3fs: send HEAD request to S3 if file size is 0 to check if it's a directory 
          Greatly increases directory access time. Consider to disable this option. -->
-    <check_empty_files type="boolean">True</check_empty_files>
+    <check_empty_files type="boolean">False</check_empty_files>
 
     <!-- Storage class to use for storing the object. 
          Valid Values: STANDARD | REDUCED_REDUNDANCY 
