@@ -13,38 +13,52 @@
     - libssl-dev
     - libxml2-dev
     - pkg-config
+  tags:
+    - riofs
 
 - name: Clone Repository
   git:
     repo: 'https://github.com/skoobe/riofs.git'
     dest: "{{ riofs_build_path }}"
+  tags:
+    - riofs
 
 - name: Build | autogen
   command: ./autogen.sh
   args:
     chdir: "{{ riofs_build_path }}"
     creates: "{{ riofs_build_path }}/configure"
+  tags:
+    - riofs
 
 - name: Build | configure
   command: ./configure
   args:
     chdir: "{{ riofs_build_path }}"
     creates: "{{ riofs_build_path }}/Makefile"
+  tags:
+    - riofs
 
 - name: Build | make
   command: make
   args:
     chdir: "{{ riofs_build_path }}"
     creates: "{{ riofs_build_path }}/src/riofs"
+  tags:
+    - riofs
 
 - name: Install | make install
   command: make install
   args:
     chdir: "{{ riofs_build_path }}"
     creates: "{{ '/usr/local/bin/riofs' if not riofs_always_reinstall else omit }}"
+  tags:
+    - riofs
 
 - name: Cleanup | make clean
   command: make clean
   args:
     chdir: "{{ riofs_build_path }}"
   when: riofs_clean_after_build
+  tags:
+    - riofs
