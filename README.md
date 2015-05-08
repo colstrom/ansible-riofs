@@ -17,7 +17,7 @@ Tunables
 
 Dependencies
 ------------
-* [telusdigital.upstart](https://github.com/colstrom/ansible-upstart/)
+* [telusdigital.upstart](https://github.com/telusdigital/ansible-upstart/)
 
 Example Playbook
 ----------------
