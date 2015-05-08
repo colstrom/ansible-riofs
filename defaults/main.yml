@@ -6,4 +6,4 @@ riofs_always_reinstall: yes
 riofs_user: riofs
 riofs_group: riofs
 riofs_users: []
-riofs_bucket_name: "telusdigital-{{ project }}-{{ environment_tier }}"
+riofs_bucket_name: "{{ mandatory }}"
