@@ -17,13 +17,13 @@ Tunables
 
 Dependencies
 ------------
-* [colstrom.upstart](https://github.com/colstrom/ansible-upstart/)
+* [telusdigital.upstart](https://github.com/colstrom/ansible-upstart/)
 
 Example Playbook
 ----------------
     - hosts: servers
       roles:
-         - role: colstrom.riofs
+         - role: telusdigital.riofs
            riofs_mountpoint: /mnt/s3
            riofs_bucket_name: mybucketname
 
@@ -36,3 +36,4 @@ Contributors
 * [Chris Olstrom](https://colstrom.github.io/) | [e-mail](mailto:chris@olstrom.com) | [Twitter](https://twitter.com/ChrisOlstrom)
 * Justin Scott
 * Steven Harradine
+* Aaron Pederson
