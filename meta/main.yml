@@ -13,5 +13,16 @@ dependencies:
       - "chown {{ riofs_user }}:{{ riofs_group }} {{ riofs_mountpoint }}"
     upstart_user: "{{ riofs_user }}"
     upstart_group: "{{ riofs_group }}"
-  - role: meta/monitor
-    monitor_name: riofs
+galaxy_info:
+  author: "Chris Olstrom"
+  company: "TELUS digital"
+  description: "RioFS is an userspace filesystem for Amazon S3 buckets for servers."
+  license: MIT
+  platforms:
+    - name: Ubuntu
+      versions:
+      - trusty
+  categories:
+    - cloud:ec2
+    - system
+    - networking
