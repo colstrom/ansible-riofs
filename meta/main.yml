@@ -5,7 +5,7 @@ dependencies:
     upstart_description: "RioFS"
     upstart_exec_path: /usr/local/bin/riofs
     upstart_exec_flags:
-      - --fuse-options='nonempty,allow_other'
+      - "--fuse-options='nonempty,allow_other'"
       - "{{ riofs_bucket_name }}"
       - "{{ riofs_mountpoint }}"
     upstart_pre_start:
@@ -23,6 +23,6 @@ galaxy_info:
       versions:
       - trusty
   categories:
-    - cloud:ec2
+    - "cloud:ec2"
     - system
     - networking
