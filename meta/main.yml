@@ -23,6 +23,6 @@ galaxy_info:
       versions:
       - trusty
   categories:
-    - "cloud:ec2"
+    - cloud:ec2
     - system
     - networking
