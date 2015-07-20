@@ -1,0 +1,7 @@
+---
+- name: Reload Service | riofs
+  service:
+    state: reloaded
+    name: riofs
+  tags:
+    - disruptive

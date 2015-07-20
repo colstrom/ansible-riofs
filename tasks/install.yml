@@ -52,6 +52,7 @@
   args:
     chdir: "{{ riofs_build_path }}"
     creates: "{{ '/usr/local/bin/riofs' if not riofs_always_reinstall else omit }}"
+  notify: Reload Service | riofs
   tags:
     - riofs
 
