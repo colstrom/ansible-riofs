@@ -69,8 +69,8 @@
     <uid type="int">-1</uid>
     <gid type="int">{{ riofs_group }}</gid>
     <!-- set default mode for all files and directories, -1 to use the default value -->
-    <dir_mode type="int">0775</dir_mode>
-    <file_mode type="int">0664</file_mode>
+    <dir_mode type="int">{{ riofs_dir_mode }}</dir_mode>
+    <file_mode type="int">{{ riofs_file_mode }}</file_mode>
 
     <!-- time to keep directory cache (seconds) -->
     <dir_cache_max_time type="uint">300</dir_cache_max_time>
