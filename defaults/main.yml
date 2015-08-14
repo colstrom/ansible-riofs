@@ -7,3 +7,5 @@ riofs_user: riofs
 riofs_group: riofs
 riofs_users: []
 riofs_bucket_name: "{{ mandatory }}"
+riofs_dir_mode: 0775
+riofs_file_mode: 0664
