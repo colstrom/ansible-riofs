@@ -29,5 +29,5 @@ script:
   # check idempotence
   - "ansible-playbook -i tests/inventory tests/$PLAYBOOK --connection=local --sudo"
   
-  # check service handler
-  - sudo service riofs start
+  # check riofs installed
+  - "riofs --version"
