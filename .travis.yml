@@ -1,6 +1,7 @@
 ---
-language: python
-python: "2.7"
+sudo: required
+dist: trusty
+language: generic
 
 env:
   - PLAYBOOK=test.yml
@@ -10,7 +11,7 @@ before_install:
 
 install:
   # install ansible
-  - pip install ansible
+  - sudo pip install ansible
 
   # configure ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
@@ -27,3 +28,8 @@ script:
 
   # check idempotence
   - "ansible-playbook -i tests/inventory tests/$PLAYBOOK --connection=local --sudo"
+  
+  # check service handlers
+  - sudo service riofs start
+  - sudo service riofs stop
+  - sudo service riofs start
