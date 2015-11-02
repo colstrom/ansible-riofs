@@ -35,11 +35,11 @@
     src: "{{ item }}"
     dest: "/{{ item }}"
     owner: "{{ riofs_user }}"
-    group: wcadmin
+    group: "{{ riofs_group }}"
     mode: 0775
   with_items:
     - usr/local/etc/riofs/riofs.conf.xml
-  notify: Reload Service | riofs
+  notify: service | riofs | reloaded
   tags:
     - configuration
     - template-configuration

@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: telusdigital.upstart
+      upstart_name: riofs
+      upstart_description: "RioFS"
+      upstart_exec_path: /usr/local/bin/riofs
+      upstart_exec_flags:
+        - "--fuse-options='nonempty,allow_other'"
+        - "travis"
+        - "/mnt/s3"
+      upstart_pre_start:
+        - "mkdir -p /mnt/s3"
+        - "chown riofs:riofs /mnt/s3"
+      upstart_user: "riofs"
+      upstart_group: "riofs"
+    - role: ansible-riofs
+      riofs_bucket_name: travis
+      riofs_access_key_id: "{{ lookup('env','RIOFS_ACCESS_KEY_ID') }}"
+      riofs_secret_access_key: "{{ lookup('env','RIOFS_SECRET_ACCESS_KEY') }}"

@@ -2,6 +2,7 @@
 
 [riofs](https://github.com/skoobe/riofs) - RioFS is an userspace filesystem for Amazon S3 buckets for servers.
 
+[![Build Status](https://travis-ci.org/telusdigital/ansible-riofs.svg?branch=master)](https://travis-ci.org/telusdigital/ansible-riofs)
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
 
 Tunables

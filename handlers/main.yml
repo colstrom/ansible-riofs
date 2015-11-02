@@ -1,7 +1,20 @@
 ---
-- name: Reload Service | riofs
+- name: service | riofs | started
   service:
-    state: reloaded
     name: riofs
-  tags:
-    - disruptive
+    state: started
+
+- name: service | riofs | stopped
+  service:
+    name: riofs
+    state: stopped
+
+- name: service | riofs | restarted
+  service:
+    name: riofs
+    state: restarted
+
+- name: service | riofs | reloaded
+  service:
+    name: riofs
+    state: reloaded

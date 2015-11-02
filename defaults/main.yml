@@ -1,11 +1,16 @@
 ---
+riofs_user: riofs
+riofs_group: riofs
+riofs_users: []
+
+riofs_dir_mode: 0775
+riofs_file_mode: 0664
+
 riofs_mountpoint: /mnt/s3
 riofs_build_path: /opt/riofs
 riofs_clean_after_build: yes
 riofs_always_reinstall: yes
-riofs_user: riofs
-riofs_group: riofs
-riofs_users: []
+
 riofs_bucket_name: "{{ mandatory }}"
-riofs_dir_mode: 0775
-riofs_file_mode: 0664
+riofs_access_key_id: "{{ mandatory }}"
+riofs_secret_access_key: "{{ mandatory }}"
