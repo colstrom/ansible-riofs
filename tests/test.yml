@@ -8,13 +8,12 @@
       upstart_exec_path: /usr/local/bin/riofs
       upstart_exec_flags:
         - "--fuse-options='nonempty,allow_other'"
-        - "{{ riofs_bucket_name }}"
-        - "{{ riofs_mountpoint }}"
+        - "travis"
+        - "/mnt/s3"
       upstart_pre_start:
-        - "mkdir -p {{ riofs_mountpoint }}"
-        - "chown {{ riofs_user }}:{{ riofs_group }} {{ riofs_mountpoint }}"
-      upstart_user: "{{ riofs_user }}"
-      upstart_group: "{{ riofs_group }}"
+        - "mkdir -p /mnt/s3"
+        - "chown riofs:riofs /mnt/s3"
+      upstart_user: "riofs"
+      upstart_group: "riofs"
     - role: ansible-riofs
       riofs_bucket_name: travis
-  
