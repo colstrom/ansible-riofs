@@ -3,8 +3,8 @@ riofs_user: riofs
 riofs_group: riofs
 riofs_users: []
 
-riofs_dir_mode: 0775
-riofs_file_mode: 0664
+riofs_dir_mode: 509
+riofs_file_mode: 436
 
 riofs_mountpoint: /mnt/s3
 riofs_build_path: /opt/riofs
